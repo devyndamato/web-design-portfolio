@@ -12,26 +12,29 @@
 
 <body>
 
-  <main class="container">
+  <header class="container">
+    <h1>Hello, World 👋</h1>
+    <p class="subtitle">
+      This is my first published website using GitHub Pages.
+    </p>
 
-    <!-- Navigation added for Lab 2.2 -->
-    <nav>
+    <!-- Navigation (Lab 2.3: inside header) -->
+    <nav aria-label="Primary">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">About Me</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+  </header>
 
-    <header>
-      <h1>Hello, World 👋</h1>
-      <p class="subtitle">
-        This is my first published website using GitHub Pages.
-      </p>
-    </header>
-    
-    <a href="bio.html">About Me</a>
+  <main class="container">
+
+    <section>
+      <h2>Quick Link</h2>
+      <p><a href="bio.html">About Me</a></p>
+    </section>
 
     <section>
       <h2>About This Page</h2>
@@ -62,16 +65,15 @@
           Images live in their own folder and are linked using relative paths.
         </figcaption>
       </figure>
-
     </section>
 
-    <footer>
-      <p>
-        Built by <strong>Your Name</strong> · MFJS 3501 · Week 1
-      </p>
-    </footer>
-
   </main>
+
+  <footer class="container">
+    <p>
+      Built by <strong>Devyn D&apos;Amato</strong> · MFJS 3501 · Week 1
+    </p>
+  </footer>
 
 </body>
 </html>
