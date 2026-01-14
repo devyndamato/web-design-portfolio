@@ -54,3 +54,27 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+/* About page layout */
+.about-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Put image on the left */
+.about-image {
+  order: -1;
+  flex: 1;
+}
+
+/* Text on the right */
+.about-text {
+  flex: 2;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
