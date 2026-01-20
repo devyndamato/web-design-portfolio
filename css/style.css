@@ -3,17 +3,30 @@
   Basic styles to demonstrate separation of structure and presentation
 */
 
+/* =========================
+   Global Reset
+   ========================= */
+
 * {
   box-sizing: border-box;
 }
 
+/* =========================
+   Base / Global Styles
+   ========================= */
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
   line-height: 1.6;
   background-color: #f6f6f6;
   color: #222;
 }
+
+/* =========================
+   Layout Container
+   ========================= */
 
 .container {
   max-width: 800px;
@@ -22,9 +35,23 @@ body {
   background-color: #ffffff;
 }
 
+/* =========================
+   Headings
+   ========================= */
+
 header h1 {
   margin-bottom: 0.25rem;
+  font-weight: 600;
 }
+
+h2, h3 {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+/* =========================
+   Subtitles / Text
+   ========================= */
 
 .subtitle {
   margin-top: 0;
@@ -34,6 +61,14 @@ header h1 {
 section {
   margin-top: 2rem;
 }
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   Images
+   ========================= */
 
 img {
   max-width: 100%;
@@ -47,6 +82,10 @@ figcaption {
   color: #555;
 }
 
+/* =========================
+   Footer
+   ========================= */
+
 footer {
   margin-top: 3rem;
   padding-top: 1rem;
@@ -55,7 +94,10 @@ footer {
   color: #666;
 }
 
-/* About page layout */
+/* =========================
+   About Page Layout
+   ========================= */
+
 .about-layout {
   display: flex;
   gap: 2rem;
