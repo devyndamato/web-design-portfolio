@@ -1,5 +1,5 @@
 /*
-  MFJS 3501 — Lab 3.3
+  MFJS 3501 — Release 3 / Lab 3.3
   Color System + Intentional Color Use + Contrast-Friendly Choices
   (Builds on Lab 3.2 Typography + Spacing)
 */
@@ -74,7 +74,7 @@ body {
 }
 
 /* =========================
-   Navigation (Color + spacing requirement)
+   Navigation (Styled)
    ========================= */
 
 nav {
@@ -189,6 +189,14 @@ figcaption {
   color: var(--color-muted);
 }
 
+/* About page image styling (NOT layout) */
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 3px solid var(--color-primary); /* intentional accent */
+}
+
 /* =========================
    Footer
    ========================= */
@@ -202,32 +210,28 @@ footer {
 }
 
 /* =========================
-   About Page Layout
+   About Page Layout (Sprint 4)
+   Release 3 requirement: NO flexbox/grid/floats yet.
+   Leaving this commented out so you can reuse later.
    ========================= */
 
+/*
 .about-layout {
   display: flex;
   gap: var(--space-2);
   align-items: flex-start;
 }
 
-/* Put image on the left */
 .about-image {
   order: -1;
   flex: 1;
 }
 
-/* Text on the right */
 .about-text {
   flex: 2;
 }
+*/
 
-.about-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 3px solid var(--color-primary); /* intentional accent */
-}
 /* =========================
    Accent: Bold text in body copy
    Uses secondary coral for emphasis
