@@ -2,6 +2,8 @@
   MFJS 3501 — Release 3 / Lab 3.3
   Color System + Intentional Color Use + Contrast-Friendly Choices
   (Builds on Lab 3.2 Typography + Spacing)
+
+  UPDATE (Lab 4.1): Mobile-first responsive layout + media query + responsive images
 */
 
 /* =========================
@@ -48,33 +50,36 @@
 }
 
 /* =========================
-   Base / Global Styles
+   Base / Global Styles (Mobile-first)
    ========================= */
 
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-size: var(--text-md);
-  line-height: 1.65; /* comfortable reading */
+  line-height: 1.65;
   background-color: var(--color-bg);
   color: var(--color-text);
 }
 
 /* =========================
-   Layout Container
+   Layout Container (Mobile-first, flexible)
+   Avoid fixed pixel widths
    ========================= */
 
 .container {
-  max-width: 800px;
-  margin: var(--space-4) auto;
-  padding: var(--space-2);
+  width: 100%;
+  max-width: 900px; /* scales up nicely on desktop */
+  margin: var(--space-2) auto; /* smaller top/bottom on mobile */
+  padding: 1.25rem; /* comfortable on phone */
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border); /* subtle accent */
-  border-radius: 12px; /* optional: helps the "card" feel */
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
 }
 
 /* =========================
-   Navigation (Styled)
+   Navigation (Mobile-first)
+   Stacked links on small screens
    ========================= */
 
 nav {
@@ -85,10 +90,10 @@ nav {
 }
 
 nav a {
-  display: inline-block;
-  margin-right: var(--space-2);
+  display: block;              /* stack on mobile */
+  padding: 0.5rem 0;
   text-decoration: none;
-  color: #ffffff; /* strong contrast on primary */
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -117,7 +122,7 @@ a:focus {
 header h1,
 h1 {
   font-size: var(--text-xl);
-  line-height: 1.25; /* headings a bit tighter */
+  line-height: 1.25;
   margin: 0 0 var(--space-1);
   font-weight: 700;
   color: var(--color-primary);
@@ -162,7 +167,7 @@ section {
   margin-top: var(--space-4);
 }
 
-/* If you have lists, this helps spacing consistency */
+/* Lists spacing */
 ul,
 ol {
   margin: 0 0 var(--space-2);
@@ -174,7 +179,7 @@ li {
 }
 
 /* =========================
-   Images
+   Images (Responsive requirement)
    ========================= */
 
 img {
@@ -194,7 +199,7 @@ figcaption {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  border: 3px solid var(--color-primary); /* intentional accent */
+  border: 3px solid var(--color-primary);
 }
 
 /* =========================
@@ -207,6 +212,37 @@ footer {
   border-top: 1px solid var(--color-border);
   font-size: var(--text-sm);
   color: var(--color-muted);
+}
+
+/* =========================
+   Accent: Bold text in body copy
+   Uses secondary coral for emphasis
+   ========================= */
+
+p strong,
+p b,
+li strong,
+li b {
+  color: var(--color-secondary);
+}
+
+/* =========================
+   Lab 4.1 — Media Query (Tablet/Desktop Enhancements)
+   At least one media query required
+   ========================= */
+
+@media (min-width: 768px) {
+  .container {
+    margin: var(--space-4) auto; /* more breathing room on larger screens */
+    padding: var(--space-2);
+  }
+
+  /* Navigation: horizontal on tablet+ */
+  nav a {
+    display: inline-block;
+    padding: 0.25rem 0;
+    margin-right: var(--space-2);
+  }
 }
 
 /* =========================
@@ -231,15 +267,3 @@ footer {
   flex: 2;
 }
 */
-
-/* =========================
-   Accent: Bold text in body copy
-   Uses secondary coral for emphasis
-   ========================= */
-
-p strong,
-p b,
-li strong,
-li b {
-  color: var(--color-secondary);
-}
