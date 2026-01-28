@@ -34,28 +34,21 @@
   /* =========================
      Color System — Lab 3.3 (Updated for contrast)
      Primary:   #204ECF (dark blue) — headings, navigation
-     Secondary: updated to a darker coral for WCAG contrast
+     Secondary: darker coral for WCAG contrast
      Neutral:   #FFF7F1 (warm background)
      Surface:   #FFFFFF (content containers)
      Text:      #1F1F1F (body text)
      ========================= */
 
   --color-primary: #204ECF;
-
-  /* CHANGED: darker coral (better contrast on white than #FF6F61) */
-  --color-secondary: #B42318;
-
+  --color-secondary: #B42318; /* accessible coral */
   --color-bg: #FFF7F1;
   --color-surface: #FFFFFF;
   --color-text: #1F1F1F;
-
-  /* CHANGED: slightly darker muted text to reduce contrast risk */
-  --color-muted: #4A4A4A;
-
-  /* Optional accent/border color */
+  --color-muted: #4A4A4A; /* darker muted for contrast */
   --color-border: #E8DCD6;
 
-  /* NEW: focus ring color (highly visible) */
+  /* Focus ring color (highly visible) */
   --color-focus: #111111;
 }
 
@@ -74,14 +67,13 @@ body {
 
 /* =========================
    Layout Container (Mobile-first, flexible)
-   Avoid fixed pixel widths
    ========================= */
 
 .container {
   width: 100%;
-  max-width: 900px; /* scales up nicely on desktop */
-  margin: var(--space-2) auto; /* smaller top/bottom on mobile */
-  padding: 1.25rem; /* comfortable on phone */
+  max-width: 900px;
+  margin: var(--space-2) auto;
+  padding: 1.25rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -89,7 +81,6 @@ body {
 
 /* =========================
    Navigation (Mobile-first)
-   Stacked links on small screens
    ========================= */
 
 nav {
@@ -99,15 +90,25 @@ nav {
   border-radius: 10px;
 }
 
+/* ✅ NEW: remove bullets/extra spacing from nav lists */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
 nav a {
-  display: block;              /* stack on mobile */
+  display: block;
   padding: 0.5rem 0;
   text-decoration: none;
   color: #ffffff;
   font-weight: 600;
 }
 
-/* Hover stays the same */
 nav a:hover {
   text-decoration: underline;
 }
@@ -116,7 +117,6 @@ nav a:hover {
    Links (Accessible contrast)
    ========================= */
 
-/* CHANGED: use a darker, accessible link color by default */
 a {
   color: var(--color-secondary);
   text-underline-offset: 0.15em;
@@ -128,10 +128,26 @@ a:hover {
 
 /* =========================
    Focus Styles (Keyboard accessibility)
-   Visible focus ring for links/buttons
    ========================= */
 
-/* NEW: strong, consistent focus ring */
+/* ✅ Updated: focus-visible is best practice (keyboard users see it clearly) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Extra-visible focus in nav on dark background */
+nav a:focus-visible {
+  outline-color: #ffffff;
+  outline-offset: 4px;
+  text-decoration: underline;
+}
+
+/* Fallback for browsers that don't support :focus-visible */
 a:focus,
 button:focus,
 input:focus,
@@ -139,13 +155,6 @@ textarea:focus,
 select:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
-}
-
-/* Optional: make nav focus extra obvious on dark background */
-nav a:focus {
-  outline-color: #ffffff;
-  outline-offset: 4px;
-  text-decoration: underline;
 }
 
 /* =========================
@@ -193,7 +202,7 @@ p {
 }
 
 /* =========================
-   Sections (Spacing requirement)
+   Sections
    ========================= */
 
 section {
@@ -212,7 +221,7 @@ li {
 }
 
 /* =========================
-   Images (Responsive requirement)
+   Images (Responsive)
    ========================= */
 
 img {
@@ -249,10 +258,8 @@ footer {
 
 /* =========================
    Accent: Bold text in body copy
-   Updated for contrast
    ========================= */
 
-/* CHANGED: use text color for bold by default (always safe) */
 p strong,
 p b,
 li strong,
@@ -261,7 +268,7 @@ li b {
   font-weight: 700;
 }
 
-/* OPTIONAL: if you still want an accent, keep it dark */
+/* Optional accent class if you want it */
 p strong.accent,
 p b.accent,
 li strong.accent,
@@ -270,13 +277,12 @@ li b.accent {
 }
 
 /* =========================
-   Lab 4.1 — Media Query (Tablet/Desktop Enhancements)
-   At least one media query required
+   Lab 4.1 — Media Query
    ========================= */
 
 @media (min-width: 768px) {
   .container {
-    margin: var(--space-4) auto; /* more breathing room on larger screens */
+    margin: var(--space-4) auto;
     padding: var(--space-2);
   }
 
