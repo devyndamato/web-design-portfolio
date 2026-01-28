@@ -4,6 +4,7 @@
   (Builds on Lab 3.2 Typography + Spacing)
 
   UPDATE (Lab 4.1): Mobile-first responsive layout + media query + responsive images
+  UPDATE (Lab 4.3): WCAG fixes — contrast + focus styles
 */
 
 /* =========================
@@ -31,22 +32,31 @@
   --space-4: 4rem;
 
   /* =========================
-     Color System — Lab 3.3
+     Color System — Lab 3.3 (Updated for contrast)
      Primary:   #204ECF (dark blue) — headings, navigation
-     Secondary: #FF6F61 (coral) — links, accents
+     Secondary: updated to a darker coral for WCAG contrast
      Neutral:   #FFF7F1 (warm background)
      Surface:   #FFFFFF (content containers)
      Text:      #1F1F1F (body text)
      ========================= */
+
   --color-primary: #204ECF;
-  --color-secondary: #FF6F61;
+
+  /* CHANGED: darker coral (better contrast on white than #FF6F61) */
+  --color-secondary: #B42318;
+
   --color-bg: #FFF7F1;
   --color-surface: #FFFFFF;
   --color-text: #1F1F1F;
-  --color-muted: #6B6B6B;
+
+  /* CHANGED: slightly darker muted text to reduce contrast risk */
+  --color-muted: #4A4A4A;
 
   /* Optional accent/border color */
   --color-border: #E8DCD6;
+
+  /* NEW: focus ring color (highly visible) */
+  --color-focus: #111111;
 }
 
 /* =========================
@@ -97,21 +107,44 @@ nav a {
   font-weight: 600;
 }
 
-nav a:hover,
-nav a:focus {
+/* Hover stays the same */
+nav a:hover {
   text-decoration: underline;
 }
 
 /* =========================
-   Links (Secondary color)
+   Links (Accessible contrast)
    ========================= */
 
+/* CHANGED: use a darker, accessible link color by default */
 a {
   color: var(--color-secondary);
+  text-underline-offset: 0.15em;
 }
 
-a:hover,
-a:focus {
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Focus Styles (Keyboard accessibility)
+   Visible focus ring for links/buttons
+   ========================= */
+
+/* NEW: strong, consistent focus ring */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Optional: make nav focus extra obvious on dark background */
+nav a:focus {
+  outline-color: #ffffff;
+  outline-offset: 4px;
   text-decoration: underline;
 }
 
@@ -216,13 +249,23 @@ footer {
 
 /* =========================
    Accent: Bold text in body copy
-   Uses secondary coral for emphasis
+   Updated for contrast
    ========================= */
 
+/* CHANGED: use text color for bold by default (always safe) */
 p strong,
 p b,
 li strong,
 li b {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* OPTIONAL: if you still want an accent, keep it dark */
+p strong.accent,
+p b.accent,
+li strong.accent,
+li b.accent {
   color: var(--color-secondary);
 }
 
