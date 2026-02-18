@@ -316,3 +316,6 @@ li b.accent {
   flex: 2;
 }
 */
+.hidden {
+  display: none;
+}
