@@ -14,11 +14,14 @@
 
 <body>
 
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="container">
     <h1>Contact Me</h1>
     <p class="subtitle">This page provides ways to get in touch with me.</p>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
@@ -28,35 +31,44 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main-content" class="container">
 
-    <section>
-      <h2>Get in Touch</h2>
+    <section aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in Touch</h2>
 
       <p>
-        I am always open to new opportunities, creative projects, and professional connections. Whether you are interested in working together, learning more about my experience, or just starting a conversation, I would love to hear from you.
+        I am always open to new opportunities, creative projects, and professional connections.
+        Whether you are interested in working together, learning more about my experience,
+        or starting a conversation, I would love to hear from you.
       </p>
 
       <p>
-        You can reach me through the contact options listed below, including email and LinkedIn. These platforms are the best way to connect with me, ask questions, or discuss potential collaborations.
+        You can reach me through the contact options listed below, including email and LinkedIn.
+        These platforms are the best way to connect with me or discuss potential collaborations.
       </p>
 
       <p>
-        In the future, this page will also include a contact form so visitors can send messages directly through the site. This will make it easier to get in touch while keeping my contact information private and secure.
+        In the future, this page will also include a contact form so visitors can send messages
+        directly through the site.
       </p>
     </section>
 
-    <section>
-      <h2>Contact Information</h2>
+    <section aria-labelledby="info-heading">
+      <h2 id="info-heading">Contact Information</h2>
+
       <ul>
         <li>
-          Email:
-          <a href="mailto:devyn.damato@du.edu">devyn.damato@du.edu</a>
+          <strong>Email:</strong>
+          <a href="mailto:devyn.damato@du.edu">
+            Send an email to devyn.damato@du.edu
+          </a>
         </li>
         <li>
-          LinkedIn:
-          <a href="https://www.linkedin.com/in/devyn-damato" target="_blank" rel="noopener">
-            Visit my LinkedIn profile
+          <strong>LinkedIn:</strong>
+          <a href="https://www.linkedin.com/in/devyn-damato"
+             target="_blank"
+             rel="noopener noreferrer">
+            Visit my LinkedIn profile (opens in new tab)
           </a>
         </li>
       </ul>
