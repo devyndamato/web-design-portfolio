@@ -14,11 +14,14 @@
 
 <body>
 
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="container">
     <h1>About Me</h1>
     <p class="subtitle">This page shares my background and interests.</p>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" aria-current="page">About Me</a></li>
@@ -28,10 +31,10 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main-content" class="container">
 
-    <section>
-      <h2>Who I Am</h2>
+    <section aria-labelledby="who-heading">
+      <h2 id="who-heading">Who I Am</h2>
 
       <div class="about-layout">
 
@@ -44,31 +47,33 @@
           </p>
 
           <p>
-            I was born in Denver but grew up in Overland Park, Kansas, a suburb of Kansas City. While Kansas may not be the most exciting state,
-            it has a lot to offer. Some of my favorite things about Kansas City are the amazing barbecue, little to no traffic, home-cooked meals
-            from my parents, and how green everything is. I never realized how vibrant nature was until I came back home after my first year at DU.
+            I was born in Denver but grew up in Overland Park, Kansas, a suburb of Kansas City.
+            Some of my favorite things about Kansas City are the amazing barbecue, little to no traffic,
+            home-cooked meals from my parents, and how green everything is.
           </p>
 
           <p>
-            Outside of my professional life, I enjoy traveling, spending time outdoors, reading, and attending live music. I love finding new
-            places to explore, whether that is in a new city or somewhere close to home. Getting outside and being active helps me reset, and
-            reading is one of my favorite ways to unwind. I also really value spending time with my loved ones, whether that means a quiet night
-            in or going out to do something fun together.
+            Outside of my professional life, I enjoy traveling, spending time outdoors, reading, and attending live music.
+            I love finding new places to explore, whether that is in a new city or somewhere close to home.
+            Getting outside and being active helps me reset, and reading is one of my favorite ways to unwind.
           </p>
         </div>
 
         <div class="about-image">
-          <img src="images/aboutme.jpg" alt="Devyn D'Amato standing in Copenhagen during her study abroad semester" />
+          <img
+            src="images/aboutme.jpg"
+            alt="Devyn D'Amato standing outdoors in Copenhagen during her study abroad semester"
+          />
         </div>
 
       </div>
     </section>
 
-    <section>
-      <h2>Fun Facts</h2>
+    <section aria-labelledby="fun-heading">
+      <h2 id="fun-heading">Fun Facts</h2>
       <ul>
         <li>I have been to over 15 national parks.</li>
-        <li>I have a dog named Duke who is almost 18!</li>
+        <li>I have a dog named Duke who is almost 18.</li>
         <li>My favorite book is <em>All the Light We Cannot See</em> by Anthony Doerr.</li>
         <li>I have been skiing since I was 3.</li>
       </ul>
