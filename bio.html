@@ -15,11 +15,14 @@
 
 <body>
 
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="container">
     <h1>Bio</h1>
     <p class="subtitle">A short introduction to who I am and what I’m working toward.</p>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html" aria-current="page">Bio</a></li>
@@ -30,10 +33,10 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main-content" class="container">
 
-    <section>
-      <h2>Introduction</h2>
+    <section aria-labelledby="intro-heading">
+      <h2 id="intro-heading">Introduction</h2>
       <p>
         My name is <strong>Devyn D’Amato</strong>. I am a senior at the University of Denver majoring in Strategic Communications
         with a Marketing minor. Through coursework and internships, I’ve developed a strong interest in public relations,
@@ -41,8 +44,8 @@
       </p>
     </section>
 
-    <section>
-      <h2>What I’m Interested In</h2>
+    <section aria-labelledby="interests-heading">
+      <h2 id="interests-heading">What I’m Interested In</h2>
       <ul>
         <li>Public relations and strategic communication</li>
         <li>Brand storytelling and content strategy</li>
@@ -50,15 +53,15 @@
       </ul>
     </section>
 
-    <section>
-      <h2>Photo</h2>
+    <section aria-labelledby="photo-heading">
+      <h2 id="photo-heading">Photo</h2>
       <figure>
         <img
           src="images/placeholder.jpg"
-          alt="Neutral placeholder graphic used until a personal headshot is added"
+          alt="Temporary placeholder image that will be replaced with a professional headshot of Devyn D'Amato"
         />
         <figcaption>
-          Placeholder image. I will replace this with a professional headshot.
+          Placeholder image. This will be replaced with a professional headshot.
         </figcaption>
       </figure>
     </section>
