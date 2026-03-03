@@ -5,6 +5,10 @@
 
   UPDATE (Lab 4.1): Mobile-first responsive layout + media query + responsive images
   UPDATE (Lab 4.3): WCAG fixes — contrast + focus styles
+
+  UPDATE (Lab 9.1): Design System — Type & Color
+  Fonts: Playfair Display (headings), Raleway (body)
+  Palette: Navy #374374, Cloud #FFFCF5, Periwinkle #BABDE2, Maroon #895159, Peach #DFAEA1
 */
 
 /* =========================
@@ -16,15 +20,27 @@
 }
 
 /* =========================
-   Type Scale + Spacing System
+   Design System Tokens (Type + Color)
    ========================= */
 
 :root {
-  /* Type scale (small → medium → large) */
-  --text-sm: 0.95rem;   /* small (captions / footer) */
-  --text-md: 1rem;      /* medium (paragraphs) */
-  --text-lg: 1.25rem;   /* large (h2/h3) */
-  --text-xl: 2rem;      /* extra large (h1) */
+  /* Fonts */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Raleway", sans-serif;
+
+  /* Type scale (mobile → desktop using clamp) */
+  --h1-size: clamp(2.25rem, 4vw, 3rem);      /* 36px → 48px */
+  --h2-size: clamp(1.625rem, 3vw, 2rem);     /* 26px → 32px */
+  --h3-size: clamp(1.25rem, 2.2vw, 1.375rem);/* 20px → 22px */
+  --body-size: clamp(1rem, 1.5vw, 1.125rem); /* 16px → 18px */
+  --caption-size: 0.875rem;                  /* 14px */
+
+  /* Line-height */
+  --lh-h1: 1.2;
+  --lh-h2: 1.3;
+  --lh-h3: 1.4;
+  --lh-body: 1.6;
+  --lh-caption: 1.5;
 
   /* Spacing pattern (consistent) */
   --space-1: 1rem;
@@ -32,24 +48,37 @@
   --space-4: 4rem;
 
   /* =========================
-     Color System — Lab 3.3 (Updated for contrast)
-     Primary:   #204ECF (dark blue) — headings, navigation
-     Secondary: darker coral for WCAG contrast
-     Neutral:   #FFF7F1 (warm background)
-     Surface:   #FFFFFF (content containers)
-     Text:      #1F1F1F (body text)
+     Color System — Lab 9.1
+     Primary brand: Navy
+     Primary background: Cloud
+     Secondary background: Periwinkle
+     Strong accent/emphasis: Maroon
+     Accent highlight: Peach
      ========================= */
 
-  --color-primary: #204ECF;
-  --color-secondary: #B42318; /* accessible coral */
-  --color-bg: #FFF7F1;
-  --color-surface: #FFFFFF;
-  --color-text: #1F1F1F;
-  --color-muted: #4A4A4A; /* darker muted for contrast */
-  --color-border: #E8DCD6;
+  --color-navy: #374374;
+  --color-cloud: #FFFCF5;
+  --color-periwinkle: #BABDE2;
+  --color-maroon: #895159;
+  --color-peach: #DFAEA1;
+
+  /* Role-based aliases (use these throughout) */
+  --color-primary: var(--color-navy);
+  --color-bg: var(--color-cloud);
+  --color-section: var(--color-periwinkle);
+  --color-accent: var(--color-peach);
+  --color-emphasis: var(--color-maroon);
+
+  /* Surfaces + text */
+  --color-surface: #FFFFFF;     /* cards/containers on Cloud bg */
+  --color-text: #2E2E2E;        /* readable body text */
+  --color-muted: #4A4A4A;
+
+  /* Borders (soft, derived from palette) */
+  --color-border: rgba(55, 67, 116, 0.18);
 
   /* Focus ring color (highly visible) */
-  --color-focus: #111111;
+  --color-focus: var(--color-primary);
 }
 
 /* =========================
@@ -58,9 +87,9 @@
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: var(--text-md);
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--lh-body);
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -90,7 +119,7 @@ nav {
   border-radius: 10px;
 }
 
-/* ✅ NEW: remove bullets/extra spacing from nav lists */
+/* remove bullets/extra spacing from nav lists */
 nav ul {
   list-style: none;
   margin: 0;
@@ -109,28 +138,34 @@ nav a {
   font-weight: 600;
 }
 
+/* subtle “accent” hover */
 nav a:hover {
   text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 /* =========================
-   Links (Accessible contrast)
+   Links (Accessible contrast + states)
    ========================= */
 
 a {
-  color: var(--color-secondary);
+  color: var(--color-primary); /* Navy */
   text-underline-offset: 0.15em;
 }
 
 a:hover {
+  color: var(--color-emphasis); /* Maroon */
   text-decoration: underline;
+}
+
+a:visited {
+  color: var(--color-primary);
 }
 
 /* =========================
    Focus Styles (Keyboard accessibility)
    ========================= */
 
-/* ✅ Updated: focus-visible is best practice (keyboard users see it clearly) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -158,31 +193,34 @@ select:focus {
 }
 
 /* =========================
-   Headings (Type scale + primary color)
+   Headings (Design system type scale)
    ========================= */
 
 header h1,
 h1 {
-  font-size: var(--text-xl);
-  line-height: 1.25;
+  font-family: var(--font-heading);
+  font-size: var(--h1-size);
+  line-height: var(--lh-h1);
   margin: 0 0 var(--space-1);
   font-weight: 700;
   color: var(--color-primary);
 }
 
 h2 {
-  font-size: var(--text-lg);
-  line-height: 1.3;
+  font-family: var(--font-heading);
+  font-size: var(--h2-size);
+  line-height: var(--lh-h2);
   margin: 0 0 var(--space-1);
   font-weight: 600;
   color: var(--color-primary);
 }
 
 h3 {
-  font-size: var(--text-lg);
-  line-height: 1.3;
+  font-family: var(--font-heading);
+  font-size: var(--h3-size);
+  line-height: var(--lh-h3);
   margin: 0 0 var(--space-1);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-primary);
 }
 
@@ -193,12 +231,22 @@ h3 {
 .subtitle {
   margin: 0 0 var(--space-2);
   color: var(--color-muted);
-  font-size: var(--text-md);
+  font-size: var(--body-size);
 }
 
 p {
   margin: 0 0 var(--space-1);
-  font-size: var(--text-md);
+  font-size: var(--body-size);
+}
+
+/* Caption / small text (Design system) */
+figcaption,
+.caption,
+small {
+  margin-top: 0.5rem;
+  font-size: var(--caption-size);
+  line-height: var(--lh-caption);
+  color: var(--color-muted);
 }
 
 /* =========================
@@ -207,6 +255,13 @@ p {
 
 section {
   margin-top: var(--space-4);
+}
+
+/* Optional: use Periwinkle as a section contrast block */
+.section-contrast {
+  background-color: var(--color-section);
+  padding: var(--space-2);
+  border-radius: 12px;
 }
 
 /* Lists spacing */
@@ -230,12 +285,6 @@ img {
   display: block;
 }
 
-figcaption {
-  margin-top: 0.5rem;
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-}
-
 /* About page image styling (NOT layout) */
 .about-image img {
   width: 100%;
@@ -252,7 +301,8 @@ footer {
   margin-top: var(--space-4);
   padding-top: var(--space-1);
   border-top: 1px solid var(--color-border);
-  font-size: var(--text-sm);
+  font-size: var(--caption-size);
+  line-height: var(--lh-caption);
   color: var(--color-muted);
 }
 
@@ -273,7 +323,14 @@ p strong.accent,
 p b.accent,
 li strong.accent,
 li b.accent {
-  color: var(--color-secondary);
+  color: var(--color-emphasis); /* Maroon */
+}
+
+/* Optional highlight class for small accents */
+.highlight {
+  background: rgba(223, 174, 161, 0.35); /* Peach tint */
+  padding: 0.05em 0.25em;
+  border-radius: 6px;
 }
 
 /* =========================
@@ -316,6 +373,7 @@ li b.accent {
   flex: 2;
 }
 */
+
 .hidden {
   display: none;
 }
