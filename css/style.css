@@ -93,6 +93,21 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
 }
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
 
 /* =========================
    Layout Container (Mobile-first, flexible)
