@@ -29,11 +29,11 @@
   --font-body: "Raleway", sans-serif;
 
   /* Type scale (mobile → desktop using clamp) */
-  --h1-size: clamp(2.25rem, 4vw, 3rem);      /* 36px → 48px */
-  --h2-size: clamp(1.625rem, 3vw, 2rem);     /* 26px → 32px */
-  --h3-size: clamp(1.25rem, 2.2vw, 1.375rem);/* 20px → 22px */
-  --body-size: clamp(1rem, 1.5vw, 1.125rem); /* 16px → 18px */
-  --caption-size: 0.875rem;                  /* 14px */
+  --h1-size: clamp(2.25rem, 4vw, 3rem);       /* 36px → 48px */
+  --h2-size: clamp(1.625rem, 3vw, 2rem);      /* 26px → 32px */
+  --h3-size: clamp(1.25rem, 2.2vw, 1.375rem); /* 20px → 22px */
+  --body-size: clamp(1rem, 1.5vw, 1.125rem);  /* 16px → 18px */
+  --caption-size: 0.875rem;                   /* 14px */
 
   /* Line-height */
   --lh-h1: 1.2;
@@ -47,22 +47,14 @@
   --space-2: 2rem;
   --space-4: 4rem;
 
-  /* =========================
-     Color System — Lab 9.1
-     Primary brand: Navy
-     Primary background: Cloud
-     Secondary background: Periwinkle
-     Strong accent/emphasis: Maroon
-     Accent highlight: Peach
-     ========================= */
-
+  /* Colors */
   --color-navy: #374374;
   --color-cloud: #FFFCF5;
   --color-periwinkle: #BABDE2;
   --color-maroon: #895159;
   --color-peach: #DFAEA1;
 
-  /* Role-based aliases (use these throughout) */
+  /* Role-based aliases */
   --color-primary: var(--color-navy);
   --color-bg: var(--color-cloud);
   --color-section: var(--color-periwinkle);
@@ -70,14 +62,14 @@
   --color-emphasis: var(--color-maroon);
 
   /* Surfaces + text */
-  --color-surface: #FFFFFF;     /* cards/containers on Cloud bg */
-  --color-text: #2E2E2E;        /* readable body text */
+  --color-surface: #FFFFFF;
+  --color-text: #2E2E2E;
   --color-muted: #4A4A4A;
 
-  /* Borders (soft, derived from palette) */
+  /* Borders */
   --color-border: rgba(55, 67, 116, 0.18);
 
-  /* Focus ring color (highly visible) */
+  /* Focus ring */
   --color-focus: var(--color-primary);
 }
 
@@ -93,12 +85,17 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
 }
+
+/* =========================
+   Skip Link (Accessibility)
+   ========================= */
+
 .skip-link {
   position: absolute;
   top: -40px;
   left: 1rem;
   background: var(--color-primary);
-  color: #fff;
+  color: #ffffff;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   text-decoration: none;
@@ -145,18 +142,28 @@ nav li {
   margin: 0;
 }
 
-nav a {
+/* ✅ FIX: nav link colors must be Cloud (not inheriting global link rules) */
+nav a,
+nav a:visited {
   display: block;
   padding: 0.5rem 0;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--color-cloud);
   font-weight: 600;
 }
 
-/* subtle “accent” hover */
+/* Hover: use Peach so it’s clearly different from default */
 nav a:hover {
+  color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+/* Active page (aria-current) */
+nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  font-weight: 700;
 }
 
 /* =========================
@@ -205,6 +212,30 @@ textarea:focus,
 select:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
+}
+
+/* =========================
+   Buttons (Optional but recommended)
+   ========================= */
+
+button {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  background: var(--color-primary);
+  color: var(--color-cloud);
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--color-emphasis); /* Maroon */
+  border-color: var(--color-emphasis);
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 /* =========================
@@ -359,35 +390,13 @@ li b.accent {
   }
 
   /* Navigation: horizontal on tablet+ */
-  nav a {
+  nav a,
+  nav a:visited {
     display: inline-block;
     padding: 0.25rem 0;
     margin-right: var(--space-2);
   }
 }
-
-/* =========================
-   About Page Layout (Sprint 4)
-   Release 3 requirement: NO flexbox/grid/floats yet.
-   Leaving this commented out so you can reuse later.
-   ========================= */
-
-/*
-.about-layout {
-  display: flex;
-  gap: var(--space-2);
-  align-items: flex-start;
-}
-
-.about-image {
-  order: -1;
-  flex: 1;
-}
-
-.about-text {
-  flex: 2;
-}
-*/
 
 .hidden {
   display: none;
