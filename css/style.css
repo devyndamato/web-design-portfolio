@@ -271,11 +271,15 @@ select:focus {
 }
 
 .btn--primary {
-  background: var(--color-primary);
-  color: var(--color-cloud);
+  background: var(--color-primary); /* navy background */
+  color: var(--color-cloud) !important; /* force white text */
   border-color: var(--color-primary);
 }
 
+.btn--primary:hover {
+  background: var(--color-emphasis); /* maroon hover */
+  color: var(--color-cloud) !important;
+}
 .btn--primary:hover {
   filter: brightness(1.05);
 }
