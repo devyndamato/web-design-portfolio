@@ -20,30 +20,72 @@
   <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="container">
-    <h1>Hello, World <span aria-hidden="true">👋</span></h1>
-    <p class="subtitle">
-      This is my first published website using GitHub Pages.
-    </p>
+  <!-- Header + Nav (updated for Lab 9.2 components) -->
+  <header>
+    <nav class="site-header" aria-label="Primary navigation">
+      <div class="nav" id="siteNav">
+        <a class="nav__brand" href="index.html">Devyn D’Amato</a>
 
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          id="navToggle">
+          Menu
+        </button>
+
+        <ul class="nav__links" id="navLinks">
+          <li><a class="nav__link is-active" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="about.html">About Me</a></li>
+          <li><a class="nav__link" href="portfolio.html">Portfolio</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </nav>
+
+    <div class="container">
+      <h1>Hello, World <span aria-hidden="true">👋</span></h1>
+      <p class="subtitle">
+        This is my first published website using GitHub Pages.
+      </p>
+
+      <div class="card__actions">
+        <a class="btn btn--primary" href="portfolio.html">View Portfolio</a>
+        <a class="btn btn--secondary" href="about.html">About Me</a>
+      </div>
+    </div>
   </header>
 
   <main id="main-content" class="container">
 
     <section aria-labelledby="quick-links-heading">
       <h2 id="quick-links-heading">Quick Links</h2>
-      <ul>
-        <li><a href="about.html">Read my background and interests</a></li>
-        <li><a href="portfolio.html">View my portfolio work</a></li>
-      </ul>
+
+      <!-- Cards (Lab 9.2) -->
+      <div class="grid-cards">
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">About Me</h3>
+            <p class="card__text">Read my background, interests, and what I’m working toward.</p>
+            <div class="card__actions">
+              <a class="btn btn--primary" href="about.html">Go to About</a>
+              <a class="btn btn--secondary" href="contact.html">Connect</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Portfolio</h3>
+            <p class="card__text">See selected projects from classes and internships.</p>
+            <div class="card__actions">
+              <a class="btn btn--primary" href="portfolio.html">View Work</a>
+              <a class="btn btn--secondary" href="portfolio.html">Browse Projects</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section aria-labelledby="about-page-heading">
@@ -54,7 +96,7 @@
       </p>
     </section>
 
-    <section aria-labelledby="learning-heading">
+    <section aria-labelledby="learning-heading" class="section-contrast">
       <h2 id="learning-heading">What I’m Learning</h2>
       <ul>
         <li>How HTML structures content on the web</li>
@@ -67,6 +109,7 @@
       <h2 id="preview-heading">Experience Preview</h2>
 
       <button
+        class="btn btn--primary"
         id="sneak-peek-btn"
         type="button"
         aria-expanded="false"
@@ -89,15 +132,19 @@
     <section aria-labelledby="placeholder-heading">
       <h2 id="placeholder-heading">Sample Placeholder</h2>
 
-      <figure>
+      <!-- Image card style -->
+      <article class="card">
         <img
+          class="card__media"
           src="images/placeholder.jpg"
           alt="Gray placeholder graphic demonstrating how images are linked using relative file paths"
         />
-        <figcaption>
-          Images live in their own folder and are linked using relative paths.
-        </figcaption>
-      </figure>
+        <div class="card__body">
+          <p class="card__text">
+            Images live in their own folder and are linked using relative paths.
+          </p>
+        </div>
+      </article>
     </section>
 
   </main>
