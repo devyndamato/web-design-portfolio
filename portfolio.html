@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Devyn D'Amato</title>
 
-  <link rel="stylesheet" href="css/style.css" />
-
+  <!-- Fonts (match Lab 9.1 design system) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -17,18 +19,39 @@
   <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="container">
-    <h1>My Portfolio</h1>
-    <p class="subtitle">This page contains my professional and academic work.</p>
+  <!-- Header + Nav (Lab 9.2 components) -->
+  <header>
+    <nav class="site-header" aria-label="Primary navigation">
+      <div class="nav" id="siteNav">
+        <a class="nav__brand" href="index.html">Devyn D’Amato</a>
 
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          id="navToggle">
+          Menu
+        </button>
+
+        <ul class="nav__links" id="navLinks">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About Me</a></li>
+          <li><a class="nav__link is-active" href="portfolio.html" aria-current="page">Portfolio</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </nav>
+
+    <div class="container">
+      <h1>My Portfolio</h1>
+      <p class="subtitle">This page contains my professional and academic work.</p>
+
+      <div class="card__actions">
+        <a class="btn btn--primary" href="contact.html">Contact Me</a>
+        <a class="btn btn--secondary" href="#experience-heading">Jump to Experience</a>
+      </div>
+    </div>
   </header>
 
   <main id="main-content" class="container">
@@ -42,86 +65,123 @@
         have developed over time.
       </p>
 
-      <div class="embed-frame">
-        <iframe
-          title="Interactive timeline of Devyn D'Amato's academic and professional experience"
-          aria-label="Interactive timeline showing academic and internship experience"
-          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ1rVTBJVRS8zSieYCpJzwz85n2cfTg_GBcc51o9ByHr-xdLpGhrqpjGhKUU5VuaVqOCb-DAvScwu5l&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
-          width="100%"
-          height="650"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-      </div>
+      <!-- Timeline inside a card for consistent spacing -->
+      <article class="card">
+        <div class="card__body">
+          <div class="embed-frame">
+            <iframe
+              title="Interactive timeline of Devyn D'Amato's academic and professional experience"
+              aria-label="Interactive timeline showing academic and internship experience"
+              src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ1rVTBJVRS8zSieYCpJzwz85n2cfTg_GBcc51o9ByHr-xdLpGhrqpjGhKUU5VuaVqOCb-DAvScwu5l&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
+              width="100%"
+              height="650"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section aria-labelledby="experience-heading">
       <h2 id="experience-heading">Experience</h2>
 
-      <article>
-        <h3>Six One Agency — Public Relations Intern</h3>
-        <p><strong>September 2025 – Present</strong></p>
-        <p>
-          Six One Agency is a public relations agency that helps brands tell their stories through strategic communication,
-          media relations, and creative content. As a public relations intern, I support client campaigns through media outreach,
-          research, writing, and content creation. My work includes building media lists, designing proposal decks, coordinating
-          influencer outreach, and creating social media content.
-        </p>
-      </article>
+      <!-- Experience cards -->
+      <div class="grid-cards">
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Six One Agency — Public Relations Intern</h3>
+            <p class="card__text"><strong>September 2025 – Present</strong></p>
+            <p class="card__text">
+              Six One Agency is a public relations agency that helps brands tell their stories through strategic communication,
+              media relations, and creative content. As a public relations intern, I support client campaigns through media outreach,
+              research, writing, and content creation. My work includes building media lists, designing proposal decks, coordinating
+              influencer outreach, and creating social media content.
+            </p>
+            <div class="card__actions">
+              <a class="btn btn--secondary" href="contact.html">Contact</a>
+            </div>
+          </div>
+        </article>
 
-      <article>
-        <h3>Port KC — Communications Intern</h3>
-        <p><strong>July 2025 – August 2025</strong></p>
-        <p>
-          Port KC works to create a more globally connected Kansas City through economic development, global commerce,
-          and transportation initiatives. As a communications intern, I supported both internal and external communication efforts,
-          contributing to projects such as the monthly newsletter, website design updates, and press releases.
-        </p>
-      </article>
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Port KC — Communications Intern</h3>
+            <p class="card__text"><strong>July 2025 – August 2025</strong></p>
+            <p class="card__text">
+              Port KC works to create a more globally connected Kansas City through economic development, global commerce,
+              and transportation initiatives. As a communications intern, I supported both internal and external communication efforts,
+              contributing to projects such as the monthly newsletter, website design updates, and press releases.
+            </p>
+            <div class="card__actions">
+              <a class="btn btn--secondary" href="contact.html">Contact</a>
+            </div>
+          </div>
+        </article>
 
-      <article>
-        <h3>mightyKARMA — Social Media &amp; Marketing Intern</h3>
-        <p><strong>June 2024 – August 2024</strong></p>
-        <p>
-          mightyKARMA is an advertising agency based in Denver, Colorado focused on using human experience to communicate brand culture.
-          I worked on creative strategic communications for brands including Intelliskin and Nana’s Dim Sum and Dumplings, while also
-          creating content calendars, social media content, and strategic communication plans.
-        </p>
-      </article>
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">mightyKARMA — Social Media &amp; Marketing Intern</h3>
+            <p class="card__text"><strong>June 2024 – August 2024</strong></p>
+            <p class="card__text">
+              mightyKARMA is an advertising agency based in Denver, Colorado focused on using human experience to communicate brand culture.
+              I worked on creative strategic communications for brands including Intelliskin and Nana’s Dim Sum and Dumplings, while also
+              creating content calendars, social media content, and strategic communication plans.
+            </p>
+            <div class="card__actions">
+              <a class="btn btn--secondary" href="contact.html">Contact</a>
+            </div>
+          </div>
+        </article>
 
-      <article>
-        <h3>Colorado Photographic Arts Center (CPAC) — Social Media &amp; Marketing Intern</h3>
-        <p><strong>June 2024 – August 2024</strong></p>
-        <p>
-          CPAC is a nonprofit that showcases the art of photography. During my internship, I managed social media, designed the monthly
-          newsletter, handled email marketing, and helped keep the website up to date.
-        </p>
-      </article>
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Colorado Photographic Arts Center (CPAC) — Social Media &amp; Marketing Intern</h3>
+            <p class="card__text"><strong>June 2024 – August 2024</strong></p>
+            <p class="card__text">
+              CPAC is a nonprofit that showcases the art of photography. During my internship, I managed social media, designed the monthly
+              newsletter, handled email marketing, and helped keep the website up to date.
+            </p>
+            <div class="card__actions">
+              <a class="btn btn--secondary" href="contact.html">Contact</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section aria-labelledby="education-heading">
       <h2 id="education-heading">Education</h2>
 
-      <article>
-        <h3>University of Denver — Strategic Communications &amp; Marketing Student</h3>
-        <p><strong>September 2022 – Present</strong></p>
-        <p>
-          The University of Denver has been home to me for the past three years, giving me opportunities to grow both academically
-          and personally. I have taken courses in advertising, marketing, strategic communications, and graphic design, including
-          Foundations of Digital Marketing, Publication and Graphic Design, International Marketing, Producing Video for Social Media,
-          Consumer Behavior, Advertising Creative Strategy, and Global and Multicultural Communication.
-        </p>
-      </article>
+      <div class="grid-cards">
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">University of Denver — Strategic Communications &amp; Marketing Student</h3>
+            <p class="card__text"><strong>September 2022 – Present</strong></p>
+            <p class="card__text">
+              The University of Denver has been home to me for the past three years, giving me opportunities to grow both academically
+              and personally. I have taken courses in advertising, marketing, strategic communications, and graphic design, including
+              Foundations of Digital Marketing, Publication and Graphic Design, International Marketing, Producing Video for Social Media,
+              Consumer Behavior, Advertising Creative Strategy, and Global and Multicultural Communication.
+            </p>
+          </div>
+        </article>
 
-      <article>
-        <h3>Lorenzo de’ Medici — Study Abroad Student</h3>
-        <p><strong>August 2024 – December 2024</strong></p>
-        <p>
-          During the fall semester of my junior year, I studied abroad at the Italian International Institute, Lorenzo de’ Medici,
-          in Florence, Italy. I traveled to seven different countries, which deepened my appreciation for diverse cultures and strengthened
-          my passion for travel and human connection. My coursework included graphic design and wine business and marketing.
-        </p>
-      </article>
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Lorenzo de’ Medici — Study Abroad Student</h3>
+            <p class="card__text"><strong>August 2024 – December 2024</strong></p>
+            <p class="card__text">
+              During the fall semester of my junior year, I studied abroad at the Italian International Institute, Lorenzo de’ Medici,
+              in Florence, Italy. I traveled to seven different countries, which deepened my appreciation for diverse cultures and strengthened
+              my passion for travel and human connection. My coursework included graphic design and wine business and marketing.
+            </p>
+            <div class="card__actions">
+              <a class="btn btn--secondary" href="about.html">Read More About Me</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
   </main>
@@ -130,5 +190,6 @@
     <p>© 2026 Devyn D'Amato · MFJS 3501</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
