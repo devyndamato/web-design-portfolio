@@ -9,6 +9,12 @@
   UPDATE (Lab 9.1): Design System — Type & Color
   Fonts: Playfair Display (headings), Raleway (body)
   Palette: Navy #374374, Cloud #FFFCF5, Periwinkle #BABDE2, Maroon #895159, Peach #DFAEA1
+
+  UPDATE (Lab 9.2): UI Components
+  Buttons (primary/secondary) + hover/focus states
+  Cards (image + text) + consistent spacing/type hierarchy
+  Navigation improvements (tap targets + active state helpers)
+  Spacing system updated to 8pt (with 4pt option)
 */
 
 /* =========================
@@ -42,10 +48,14 @@
   --lh-body: 1.6;
   --lh-caption: 1.5;
 
-  /* Spacing pattern (consistent) */
-  --space-1: 1rem;
-  --space-2: 2rem;
-  --space-4: 4rem;
+  /* Spacing system (8pt with 4pt option) */
+  --space-1: 8px;   /* 8 */
+  --space-2: 16px;  /* 16 */
+  --space-3: 24px;  /* 24 */
+  --space-4: 32px;  /* 32 */
+  --space-5: 40px;  /* 40 (optional) */
+  --space-6: 48px;  /* 48 (optional) */
+  --space-half: 4px; /* 4 */
 
   /* Colors */
   --color-navy: #374374;
@@ -71,6 +81,12 @@
 
   /* Focus ring */
   --color-focus: var(--color-primary);
+
+  /* UI tokens */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --tap-target: 44px;
 }
 
 /* =========================
@@ -114,7 +130,7 @@ body {
   width: 100%;
   max-width: 900px;
   margin: var(--space-2) auto;
-  padding: 1.25rem;
+  padding: 20px; /* keeps container comfy without forcing it into the 8pt tokens */
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -129,6 +145,7 @@ nav {
   background-color: var(--color-primary);
   padding: var(--space-1);
   border-radius: 10px;
+  position: relative;
 }
 
 /* remove bullets/extra spacing from nav lists */
@@ -142,25 +159,29 @@ nav li {
   margin: 0;
 }
 
-/* ✅ FIX: nav link colors must be Cloud (not inheriting global link rules) */
+/* Nav links: readable + tap targets */
 nav a,
 nav a:visited {
   display: block;
-  padding: 0.5rem 0;
+  min-height: var(--tap-target);
+  padding: 10px 12px;
   text-decoration: none;
   color: var(--color-cloud);
   font-weight: 600;
+  border-radius: 999px;
 }
 
 /* Hover: use Peach so it’s clearly different from default */
 nav a:hover {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  color: var(--color-cloud);
+  background: rgba(223, 174, 161, 0.35); /* Peach tint */
+  text-decoration: none;
 }
 
 /* Active page (aria-current) */
-nav a[aria-current="page"] {
+nav a[aria-current="page"],
+nav a.is-active {
+  background: rgba(137, 81, 89, 0.25); /* Maroon tint */
   text-decoration: underline;
   text-underline-offset: 0.25em;
   font-weight: 700;
@@ -201,7 +222,6 @@ select:focus-visible {
 nav a:focus-visible {
   outline-color: #ffffff;
   outline-offset: 4px;
-  text-decoration: underline;
 }
 
 /* Fallback for browsers that don't support :focus-visible */
@@ -215,27 +235,150 @@ select:focus {
 }
 
 /* =========================
-   Buttons (Optional but recommended)
+   Lab 9.2 — UI Components
    ========================= */
 
+/* ---------- Buttons (reusable classes) ---------- */
+/* Use on <a> or <button>:
+   class="btn btn--primary"
+   class="btn btn--secondary"
+*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+
+  min-height: var(--tap-target);
+  padding: 12px 16px;
+
+  border-radius: 999px;
+  border: 2px solid transparent;
+
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: transform 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease, filter 120ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-cloud);
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover {
+  background: rgba(186, 189, 226, 0.25); /* Periwinkle tint */
+}
+
+/* Keep your existing <button> styling, but align it with .btn behavior */
 button {
   font-family: var(--font-body);
   font-size: var(--body-size);
   background: var(--color-primary);
   color: var(--color-cloud);
   border: 2px solid var(--color-primary);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  padding: 12px 16px;
+  min-height: var(--tap-target);
   cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, filter 120ms ease;
 }
 
 button:hover {
-  background: var(--color-emphasis); /* Maroon */
-  border-color: var(--color-emphasis);
+  filter: brightness(1.05);
 }
 
 button:active {
   transform: translateY(1px);
+}
+
+/* ---------- Cards (image + text) ---------- */
+/* Structure:
+  <article class="card card--link">
+    <img class="card__media" ...>
+    <div class="card__body">
+      <h3 class="card__title">...</h3>
+      <p class="card__text">...</p>
+      <div class="card__actions">...</div>
+    </div>
+  </article>
+*/
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: rgba(186, 189, 226, 0.2);
+}
+
+.card__body {
+  padding: var(--space-2);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--h3-size);
+  line-height: var(--lh-h3);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.card__text {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+/* Optional “lift on hover” for clickable cards */
+.card--link {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.card--link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Optional grid helper for a portfolio section */
+.grid-cards {
+  display: grid;
+  gap: var(--space-2);
 }
 
 /* =========================
@@ -318,7 +461,7 @@ ol {
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-half);
 }
 
 /* =========================
@@ -386,15 +529,28 @@ li b.accent {
 @media (min-width: 768px) {
   .container {
     margin: var(--space-4) auto;
-    padding: var(--space-2);
+    padding: var(--space-3);
   }
 
   /* Navigation: horizontal on tablet+ */
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    align-items: center;
+  }
+
   nav a,
   nav a:visited {
-    display: inline-block;
-    padding: 0.25rem 0;
-    margin-right: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    margin-right: 0;
+  }
+
+  /* Cards grid helper */
+  .grid-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
