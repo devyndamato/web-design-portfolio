@@ -15,6 +15,9 @@
   Cards (image + text) + consistent spacing/type hierarchy
   Navigation improvements (tap targets + active state helpers)
   Spacing system updated to 8pt (with 4pt option)
+
+  UPDATE (Portfolio logos): show full logo + centered (no cropping)
+  UPDATE (Polish): subtle shadow + hover lift + smoother transitions
 */
 
 /* =========================
@@ -86,6 +89,7 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.07);   /* polish */
   --tap-target: 44px;
 }
 
@@ -239,10 +243,6 @@ select:focus {
    ========================= */
 
 /* ---------- Buttons (reusable classes) ---------- */
-/* Use on <a> or <button>:
-   class="btn btn--primary"
-   class="btn btn--secondary"
-*/
 .btn {
   display: inline-flex;
   align-items: center;
@@ -279,8 +279,6 @@ select:focus {
 .btn--primary:hover {
   background: var(--color-emphasis); /* maroon hover */
   color: var(--color-cloud) !important;
-}
-.btn--primary:hover {
   filter: brightness(1.05);
 }
 
@@ -295,7 +293,7 @@ select:focus {
   color: var(--color-primary);
 }
 
-/* Keep your existing <button> styling, but align it with .btn behavior */
+/* Keep existing <button> styling aligned with .btn */
 button {
   font-family: var(--font-body);
   font-size: var(--body-size);
@@ -318,28 +316,34 @@ button:active {
 }
 
 /* ---------- Cards (image + text) ---------- */
-/* Structure:
-  <article class="card card--link">
-    <img class="card__media" ...>
-    <div class="card__body">
-      <h3 class="card__title">...</h3>
-      <p class="card__text">...</p>
-      <div class="card__actions">...</div>
-    </div>
-  </article>
-*/
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
+
+  /* polish */
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
+/* LOGO/IMAGE MEDIA: centered + show full image */
 .card__media {
-  display: block;
   width: 100%;
+  height: 180px;              /* consistent card top area */
+  object-fit: contain;        /* show whole logo */
+  object-position: center;    /* keep it centered */
+  background: #ffffff;        /* clean backdrop for logos */
+  padding: 18px;              /* breathing room around logos */
+  display: block;
+}
+
+/* If you ever use photos again and want cropping, add class="card__media card__media--cover" */
+.card__media--cover {
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  padding: 0;
   background: rgba(186, 189, 226, 0.2);
 }
 
@@ -370,14 +374,11 @@ button:active {
   margin-top: var(--space-1);
 }
 
-/* Optional “lift on hover” for clickable cards */
-.card--link {
-  transition: transform 150ms ease, box-shadow 150ms ease;
-}
-
+/* Polished hover for clickable cards */
 .card--link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(55, 67, 116, 0.28);
 }
 
 /* Optional grid helper for a portfolio section */
@@ -433,7 +434,6 @@ p {
   font-size: var(--body-size);
 }
 
-/* Caption / small text (Design system) */
 figcaption,
 .caption,
 small {
@@ -451,7 +451,6 @@ section {
   margin-top: var(--space-4);
 }
 
-/* Optional: use Periwinkle as a section contrast block */
 .section-contrast {
   background-color: var(--color-section);
   padding: var(--space-2);
@@ -488,6 +487,29 @@ img {
 }
 
 /* =========================
+   Contact Form (polish)
+   ========================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+input,
+textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* =========================
    Footer
    ========================= */
 
@@ -512,7 +534,6 @@ li b {
   font-weight: 700;
 }
 
-/* Optional accent class if you want it */
 p strong.accent,
 p b.accent,
 li strong.accent,
@@ -520,7 +541,6 @@ li b.accent {
   color: var(--color-emphasis); /* Maroon */
 }
 
-/* Optional highlight class for small accents */
 .highlight {
   background: rgba(223, 174, 161, 0.35); /* Peach tint */
   padding: 0.05em 0.25em;
