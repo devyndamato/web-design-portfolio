@@ -281,13 +281,14 @@ select:focus {
 }
 
 .btn--secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-border);
+  background: var(--color-periwinkle);
+  color: var(--color-primary); /* navy text */
+  border: 2px solid var(--color-periwinkle);
 }
 
 .btn--secondary:hover {
-  background: rgba(186, 189, 226, 0.25); /* Periwinkle tint */
+  background: #aeb3e0; /* slightly darker periwinkle */
+  color: var(--color-primary);
 }
 
 /* Keep your existing <button> styling, but align it with .btn behavior */
