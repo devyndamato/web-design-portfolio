@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Devyn D'Amato</title>
 
-  <link rel="stylesheet" href="css/style.css" />
-
+  <!-- Fonts (match Lab 9.1 design system) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -17,18 +19,39 @@
   <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="container">
-    <h1>About Me</h1>
-    <p class="subtitle">This page shares my background and interests.</p>
+  <!-- Header + Nav (Lab 9.2 components) -->
+  <header>
+    <nav class="site-header" aria-label="Primary navigation">
+      <div class="nav" id="siteNav">
+        <a class="nav__brand" href="index.html">Devyn D’Amato</a>
 
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" aria-current="page">About Me</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          id="navToggle">
+          Menu
+        </button>
+
+        <ul class="nav__links" id="navLinks">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link is-active" href="about.html" aria-current="page">About Me</a></li>
+          <li><a class="nav__link" href="portfolio.html">Portfolio</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </nav>
+
+    <div class="container">
+      <h1>About Me</h1>
+      <p class="subtitle">This page shares my background and interests.</p>
+
+      <div class="card__actions">
+        <a class="btn btn--primary" href="portfolio.html">View Portfolio</a>
+        <a class="btn btn--secondary" href="contact.html">Connect</a>
+      </div>
+    </div>
   </header>
 
   <main id="main-content" class="container">
@@ -36,47 +59,64 @@
     <section aria-labelledby="who-heading">
       <h2 id="who-heading">Who I Am</h2>
 
-      <div class="about-layout">
+      <!-- Card for image + text (Lab 9.2) -->
+      <article class="card">
+        <img
+          class="card__media"
+          src="images/aboutme.jpg"
+          alt="Devyn D'Amato standing outdoors in Copenhagen during her study abroad semester"
+        />
 
-        <div class="about-text">
-          <p>
+        <div class="card__body">
+          <p class="card__text">
             I am a current senior at the University of Denver, majoring in Strategic Communications with a Marketing minor.
             Throughout my time in school and through my internship experience, I have developed a strong passion for public relations,
             from building media relationships to crafting compelling brand stories. As I prepare to graduate, I am excited to continue
             growing in the PR industry and to contribute to campaigns that make an impact.
           </p>
 
-          <p>
+          <p class="card__text">
             I was born in Denver but grew up in Overland Park, Kansas, a suburb of Kansas City.
             Some of my favorite things about Kansas City are the amazing barbecue, little to no traffic,
             home-cooked meals from my parents, and how green everything is.
           </p>
 
-          <p>
+          <p class="card__text">
             Outside of my professional life, I enjoy traveling, spending time outdoors, reading, and attending live music.
             I love finding new places to explore, whether that is in a new city or somewhere close to home.
             Getting outside and being active helps me reset, and reading is one of my favorite ways to unwind.
           </p>
         </div>
-
-        <div class="about-image">
-          <img
-            src="images/aboutme.jpg"
-            alt="Devyn D'Amato standing outdoors in Copenhagen during her study abroad semester"
-          />
-        </div>
-
-      </div>
+      </article>
     </section>
 
     <section aria-labelledby="fun-heading">
       <h2 id="fun-heading">Fun Facts</h2>
-      <ul>
-        <li>I have been to over 15 national parks.</li>
-        <li>I have a dog named Duke who is almost 18.</li>
-        <li>My favorite book is <em>All the Light We Cannot See</em> by Anthony Doerr.</li>
-        <li>I have been skiing since I was 3.</li>
-      </ul>
+
+      <div class="grid-cards">
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Quick Facts</h3>
+            <ul>
+              <li>I have been to over 15 national parks.</li>
+              <li>I have a dog named Duke who is almost 18.</li>
+              <li>My favorite book is <em>All the Light We Cannot See</em> by Anthony Doerr.</li>
+              <li>I have been skiing since I was 3.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card card--link">
+          <div class="card__body">
+            <h3 class="card__title">Want to connect?</h3>
+            <p class="card__text">If you want to talk about internships, projects, or opportunities, reach out.</p>
+            <div class="card__actions">
+              <a class="btn btn--primary" href="contact.html">Contact Me</a>
+              <a class="btn btn--secondary" href="portfolio.html">See Projects</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
   </main>
@@ -85,5 +125,6 @@
     <p>© 2026 Devyn D'Amato · MFJS 3501</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
