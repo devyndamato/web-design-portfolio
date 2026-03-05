@@ -18,6 +18,8 @@
 
   UPDATE (Portfolio logos): show full logo + centered (no cropping)
   UPDATE (Polish): subtle shadow + hover lift + smoother transitions
+
+  UPDATE (About layout): image left + text right on tablet/desktop
 */
 
 /* =========================
@@ -89,7 +91,7 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.07);   /* polish */
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.07);
   --tap-target: 44px;
 }
 
@@ -134,7 +136,7 @@ body {
   width: 100%;
   max-width: 900px;
   margin: var(--space-2) auto;
-  padding: 20px; /* keeps container comfy without forcing it into the 8pt tokens */
+  padding: 20px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -152,7 +154,6 @@ nav {
   position: relative;
 }
 
-/* remove bullets/extra spacing from nav lists */
 nav ul {
   list-style: none;
   margin: 0;
@@ -163,7 +164,6 @@ nav li {
   margin: 0;
 }
 
-/* Nav links: readable + tap targets */
 nav a,
 nav a:visited {
   display: block;
@@ -175,17 +175,15 @@ nav a:visited {
   border-radius: 999px;
 }
 
-/* Hover: use Peach so it’s clearly different from default */
 nav a:hover {
   color: var(--color-cloud);
-  background: rgba(223, 174, 161, 0.35); /* Peach tint */
+  background: rgba(223, 174, 161, 0.35);
   text-decoration: none;
 }
 
-/* Active page (aria-current) */
 nav a[aria-current="page"],
 nav a.is-active {
-  background: rgba(137, 81, 89, 0.25); /* Maroon tint */
+  background: rgba(137, 81, 89, 0.25);
   text-decoration: underline;
   text-underline-offset: 0.25em;
   font-weight: 700;
@@ -196,12 +194,12 @@ nav a.is-active {
    ========================= */
 
 a {
-  color: var(--color-primary); /* Navy */
+  color: var(--color-primary);
   text-underline-offset: 0.15em;
 }
 
 a:hover {
-  color: var(--color-emphasis); /* Maroon */
+  color: var(--color-emphasis);
   text-decoration: underline;
 }
 
@@ -222,13 +220,11 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-/* Extra-visible focus in nav on dark background */
 nav a:focus-visible {
   outline-color: #ffffff;
   outline-offset: 4px;
 }
 
-/* Fallback for browsers that don't support :focus-visible */
 a:focus,
 button:focus,
 input:focus,
@@ -242,7 +238,7 @@ select:focus {
    Lab 9.2 — UI Components
    ========================= */
 
-/* ---------- Buttons (reusable classes) ---------- */
+/* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -271,29 +267,29 @@ select:focus {
 }
 
 .btn--primary {
-  background: var(--color-primary); /* navy background */
-  color: var(--color-cloud) !important; /* force white text */
+  background: var(--color-primary);
+  color: var(--color-cloud) !important;
   border-color: var(--color-primary);
 }
 
 .btn--primary:hover {
-  background: var(--color-emphasis); /* maroon hover */
+  background: var(--color-emphasis);
   color: var(--color-cloud) !important;
   filter: brightness(1.05);
 }
 
 .btn--secondary {
   background: var(--color-periwinkle);
-  color: var(--color-primary); /* navy text */
+  color: var(--color-primary);
   border: 2px solid var(--color-periwinkle);
 }
 
 .btn--secondary:hover {
-  background: #aeb3e0; /* slightly darker periwinkle */
+  background: #aeb3e0;
   color: var(--color-primary);
 }
 
-/* Keep existing <button> styling aligned with .btn */
+/* Align default <button> with .btn */
 button {
   font-family: var(--font-body);
   font-size: var(--body-size);
@@ -315,30 +311,29 @@ button:active {
   transform: translateY(1px);
 }
 
-/* ---------- Cards (image + text) ---------- */
+/* ---------- Cards ---------- */
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
 
-  /* polish */
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 /* LOGO/IMAGE MEDIA: centered + show full image */
 .card__media {
   width: 100%;
-  height: 180px;              /* consistent card top area */
-  object-fit: contain;        /* show whole logo */
-  object-position: center;    /* keep it centered */
-  background: #ffffff;        /* clean backdrop for logos */
-  padding: 18px;              /* breathing room around logos */
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+  padding: 18px;
   display: block;
 }
 
-/* If you ever use photos again and want cropping, add class="card__media card__media--cover" */
+/* Optional cover mode (for photos) */
 .card__media--cover {
   height: auto;
   aspect-ratio: 16 / 9;
@@ -381,14 +376,14 @@ button:active {
   border-color: rgba(55, 67, 116, 0.28);
 }
 
-/* Optional grid helper for a portfolio section */
+/* Grid helper */
 .grid-cards {
   display: grid;
   gap: var(--space-2);
 }
 
 /* =========================
-   Headings (Design system type scale)
+   Headings
    ========================= */
 
 header h1,
@@ -478,16 +473,44 @@ img {
   display: block;
 }
 
-/* About page image styling (NOT layout) */
+/* =========================
+   About Page Layout (NEW)
+   ========================= */
+
+.about-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.about-image {
+  max-width: 360px; /* slightly bigger */
+}
+
 .about-image img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 3px solid var(--color-primary);
 }
 
+@media (min-width: 768px) {
+  .about-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .about-image {
+    flex: 0 0 360px; /* keeps image on left */
+  }
+
+  .about-text {
+    flex: 1;
+  }
+}
+
 /* =========================
-   Contact Form (polish)
+   Contact Form
    ========================= */
 
 form {
@@ -523,7 +546,7 @@ footer {
 }
 
 /* =========================
-   Accent: Bold text in body copy
+   Accent
    ========================= */
 
 p strong,
@@ -538,11 +561,11 @@ p strong.accent,
 p b.accent,
 li strong.accent,
 li b.accent {
-  color: var(--color-emphasis); /* Maroon */
+  color: var(--color-emphasis);
 }
 
 .highlight {
-  background: rgba(223, 174, 161, 0.35); /* Peach tint */
+  background: rgba(223, 174, 161, 0.35);
   padding: 0.05em 0.25em;
   border-radius: 6px;
 }
@@ -557,7 +580,6 @@ li b.accent {
     padding: var(--space-3);
   }
 
-  /* Navigation: horizontal on tablet+ */
   nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -573,7 +595,6 @@ li b.accent {
     margin-right: 0;
   }
 
-  /* Cards grid helper */
   .grid-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
