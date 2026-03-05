@@ -42,3 +42,43 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+  const sneakPeekBtn = document.querySelector("#sneak-peek-btn");
+  const previewSection = document.querySelector("#experience-preview");
+
+  if (sneakPeekBtn && previewSection) {
+
+    sneakPeekBtn.addEventListener("click", function () {
+
+      const isExpanded = sneakPeekBtn.getAttribute("aria-expanded") === "true";
+
+      previewSection.classList.toggle("hidden");
+
+      sneakPeekBtn.setAttribute("aria-expanded", !isExpanded);
+    });
+
+  }
+
+  /* =========================
+     Mobile Navigation Toggle
+     ========================= */
+
+  const navToggle = document.querySelector("#navToggle");
+  const navLinks = document.querySelector("#navLinks");
+
+  if (navToggle && navLinks) {
+
+    navToggle.addEventListener("click", function () {
+
+      const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+
+      navLinks.classList.toggle("hidden");
+
+      navToggle.setAttribute("aria-expanded", !isExpanded);
+
+    });
+
+  }
+
+});
