@@ -1,49 +1,199 @@
-<section aria-labelledby="screenshots-heading">
-  <h2 id="screenshots-heading">Portfolio Website Screenshots</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase | Devyn D'Amato</title>
 
-  <div class="grid-cards">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <article class="card">
-      <img
-        class="card__media"
-        src="images/home.jpeg"
-        alt="Screenshot of the homepage of Devyn D'Amato's portfolio website"
-      />
-      <div class="card__body">
-        <h3 class="card__title">Homepage</h3>
-        <p class="card__text">
-          The homepage introduces my portfolio website and provides quick access to the most important sections, including my portfolio work, background, and contact information.
-        </p>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <nav class="site-header" aria-label="Primary navigation">
+      <div class="nav" id="siteNav">
+        <a class="nav__brand" href="index.html">Devyn D’Amato</a>
+
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          id="navToggle">
+          Menu
+        </button>
+
+        <ul class="nav__links hidden" id="navLinks">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About Me</a></li>
+          <li><a class="nav__link" href="portfolio.html">Portfolio</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link is-active" href="showcase.html" aria-current="page">Showcase</a></li>
+        </ul>
       </div>
-    </article>
+    </nav>
 
-    <article class="card">
-      <img
-        class="card__media"
-        src="images/me.jpeg"
-        alt="Screenshot of the About Me page from Devyn D'Amato's portfolio website"
-      />
-      <div class="card__body">
-        <h3 class="card__title">About Page</h3>
-        <p class="card__text">
-          The About page shares more about my background, education, and interests in strategic communications and public relations while keeping a consistent visual style with the rest of the site.
-        </p>
+    <div class="container">
+      <h1>Portfolio Website Showcase</h1>
+      <p class="subtitle">
+        A polished overview of my personal portfolio website, including its purpose, audience, design choices, and development process.
+      </p>
+
+      <div class="card__actions">
+        <a class="btn btn--primary" href="index.html">Visit Portfolio Website</a>
+        <a class="btn btn--secondary" href="portfolio.html">View Portfolio</a>
       </div>
-    </article>
+    </div>
+  </header>
 
-    <article class="card">
-      <img
-        class="card__media"
-        src="images/form.jpeg"
-        alt="Screenshot of the contact form from Devyn D'Amato's portfolio website"
-      />
-      <div class="card__body">
-        <h3 class="card__title">Contact Form</h3>
-        <p class="card__text">
-          The contact page includes a working form that allows visitors to send messages directly through the website, making it easy for recruiters, collaborators, or employers to reach out.
-        </p>
+  <main id="main-content" class="container">
+
+    <section aria-labelledby="project-overview-heading">
+      <h2 id="project-overview-heading">Project Overview</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <p class="card__text">
+            I built this portfolio website to present my experience, skills, and selected work in public relations, strategic communications, and related creative projects. The goal was to create a clean, organized site that helps visitors quickly understand who I am, what kind of work I have done, and how to contact me. I designed the site with recruiters, hiring managers, professors, and potential collaborators in mind, focusing on clear navigation, readable content, and a polished visual style.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="details-heading" class="section-contrast">
+      <h2 id="details-heading">Project Details</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <ul>
+            <li><strong>Project:</strong> Personal Portfolio Website</li>
+            <li><strong>Purpose:</strong> Showcase my work, experience, and professional interests in public relations and strategic communications</li>
+            <li><strong>Audience:</strong> Recruiters, hiring managers, professors, and potential collaborators</li>
+            <li><strong>Role:</strong> Designer, writer, and developer</li>
+            <li><strong>Tools Used:</strong> HTML, CSS, JavaScript, VS Code, GitHub Pages, and Figma</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="why-heading">
+      <h2 id="why-heading">Why I Built It</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <p class="card__text">
+            I created this website as a central place for my academic, internship, and professional work. Instead of keeping my experience spread across separate documents or platforms, I wanted one site that clearly communicates my background, strengths, and interests. Each page was designed to be easy to scan while still showing professionalism, personality, and strong organization.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="screenshots-heading">
+      <h2 id="screenshots-heading">Portfolio Website Screenshots</h2>
+
+      <div class="grid-cards">
+
+        <article class="card">
+          <img
+            class="card__media"
+            src="images/home.jpeg"
+            alt="Screenshot of the homepage of Devyn D'Amato's portfolio website"
+          />
+          <div class="card__body">
+            <h3 class="card__title">Homepage</h3>
+            <p class="card__text">
+              The homepage introduces my portfolio website and provides quick access to the most important sections, including my portfolio work, background, and contact information.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__media"
+            src="images/me.jpeg"
+            alt="Screenshot of the About Me page from Devyn D'Amato's portfolio website"
+          />
+          <div class="card__body">
+            <h3 class="card__title">About Page</h3>
+            <p class="card__text">
+              The About page shares more about my background, education, and interests in strategic communications and public relations while keeping a consistent visual style with the rest of the site.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__media"
+            src="images/form.jpeg"
+            alt="Screenshot of the contact form from Devyn D'Amato's portfolio website"
+          />
+          <div class="card__body">
+            <h3 class="card__title">Contact Form</h3>
+            <p class="card__text">
+              The contact page includes a working form that allows visitors to send messages directly through the website, making it easy for recruiters, collaborators, or employers to reach out.
+            </p>
+          </div>
+        </article>
+
       </div>
-    </article>
+    </section>
 
-  </div>
-</section>
+    <section aria-labelledby="tools-heading">
+      <h2 id="tools-heading">Tools and Skills Used</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <ul>
+            <li>HTML for content structure and page organization</li>
+            <li>CSS for typography, color, spacing, layout, and responsive design</li>
+            <li>JavaScript for interactive elements like the menu toggle and reveal features</li>
+            <li>VS Code for writing and editing code</li>
+            <li>GitHub and GitHub Pages for version control and publishing the live site</li>
+            <li>Figma for planning layout and wireframe ideas</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="process-heading" class="section-contrast">
+      <h2 id="process-heading">How I Built It</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <p class="card__text">
+            I built this project in stages, starting with content planning and wireframes before moving into coded page layouts. As the project developed, I focused on improving visual consistency, strengthening the design system, and making the site more responsive across screen sizes. I also revised older pages so the site felt more professional and less like an early class project. Throughout the process, I practiced organizing content for real audiences, writing cleaner HTML, improving accessibility basics, and using CSS and JavaScript more intentionally.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="reflection-heading">
+      <h2 id="reflection-heading">What I Learned</h2>
+
+      <article class="card">
+        <div class="card__body">
+          <p class="card__text">
+            This project helped me better understand how content, design, and code work together to shape a user’s experience. I learned how important it is to build with both structure and audience in mind, especially when creating a site meant to represent me professionally. I also became more comfortable with responsive design, debugging, and refining details like navigation, spacing, accessibility, and overall consistency.
+          </p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <p>Built by <strong>Devyn D'Amato</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
